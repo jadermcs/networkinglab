@@ -1,0 +1,2 @@
+docker build -t nome_do_container .
+docker run -it nome_do_container bash
