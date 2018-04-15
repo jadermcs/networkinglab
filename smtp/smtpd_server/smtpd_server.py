@@ -20,6 +20,6 @@ class CustomSMTPServer(smtpd.SMTPServer):
                 fout.write(data)
 
 
-server = CustomSMTPServer(('127.0.0.1', 1025), None)
+server = CustomSMTPServer(('172.17.0.2', 1025), None)
 
 asyncore.loop()
