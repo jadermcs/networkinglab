@@ -9,7 +9,7 @@ ADD . /app
 
 # Install any needed packages specified in requirements.txt
 RUN apt update
-RUN apt install -qy python3
+RUN apt install -qy python3 ssh ftp telnet
 RUN apt install -qy python3-pip
 RUN apt install -qy curl
 RUN pip3 install --trusted-host pypi.python.org -r requirements.txt
