@@ -9,6 +9,7 @@ ADD . /app
 
 # Install any needed packages specified in requirements.txt
 RUN apt update
+RUN apt install -qy nano
 RUN apt install -qy apache2
 RUN apt install -qy python3
 RUN apt install -qy python3-pip
