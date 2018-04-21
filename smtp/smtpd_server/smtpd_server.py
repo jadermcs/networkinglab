@@ -2,8 +2,13 @@ from datetime import datetime
 import smtpd
 import asyncore
 import os
+import threading
+import socket
+import pop3
 
 box = "emailbox"
+
+
 
 class CustomSMTPServer(smtpd.SMTPServer):
 
@@ -20,6 +25,13 @@ class CustomSMTPServer(smtpd.SMTPServer):
                 fout.write(data)
 
 
-server = CustomSMTPServer(('172.17.0.2', 1025), None)
 
-asyncore.loop()
+
+server = CustomSMTPServer(('172.17.0.2', 1025), None)
+smtp_thread = threading.Thread(target=asyncore.loop, name="Asyncore Loop")
+pop3_thread = threading.Thread(target=pop3.init,name="pop3loop")
+# If you want to make the thread a daemon
+# loop_thread.daemon = True
+
+smtp_thread.start()
+pop3_thread.start()
